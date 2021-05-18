@@ -5,7 +5,7 @@ library(sf)
 library(terra)        # To handle raster data
 library(lubridate)    # To handle dates and times
 
-
+#Importing the data 
 caro <- read_delim("caro60.csv",",") 
 caro <- tibble(caro)
 
@@ -21,7 +21,7 @@ caro <- caro %>%
 
 #Calculating the means of steplength
 caro <- caro %>%
-  rowwise() %>%
+  rowwise() %>% #rowwise specifies that we want the mean value per row
   mutate(
     stepMean = mean(c(nMinus3, nMinus2, nMinus1,nPlus1,nPlus2, nPlus3))
   ) %>%
@@ -32,12 +32,13 @@ caro <- caro %>%
   mutate(static = stepMean < mean(stepMean, na.rm = TRUE))
 
 
-caro_filter <- caro %>%
-  filter(!static)
-
-caro_filter%>%
-  ggplot(aes(E, N))  +
+caro%>%
+  ggplot(aes(E, N),colour = static)  +
   geom_path() +
   geom_point() +
   coord_fixed() +
   theme(legend.position = "bottom")
+
+
+
+
