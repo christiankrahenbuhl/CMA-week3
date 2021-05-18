@@ -33,9 +33,9 @@ caro <- caro %>%
 
 
 caro%>%
-  ggplot(aes(E, N),colour = static)  +
+  ggplot(aes(E, N))  +
   geom_path() +
-  geom_point() +
+  geom_point(aes(colour = static)) +
   coord_fixed() +
   theme(legend.position = "bottom")
 
