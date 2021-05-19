@@ -1,7 +1,6 @@
 library(readr)        # to import tabular data (e.g. csv)
 library(dplyr)        # to manipulate (tabular) data
 library(ggplot2)      # to visualize data
-library(sf)
 library(terra)        # To handle raster data
 library(lubridate)    # To handle dates and times
 
@@ -39,6 +38,26 @@ caro%>%
   coord_fixed() +
   theme(legend.position = "bottom")
 
+#Assign unique IDs based on the column static
+rle_id <- function(vec){
+  x <- rle(vec)$lengths
+  as.factor(rep(seq_along(x), times=x))
+}
+
+caro <- caro %>%
+  mutate(segment_id = rle_id(static))
+
+#all segments
+caro%>%
+  ggplot(aes(E, N))  +
+  geom_path(aes(colour = segment_id)) +
+  geom_point(aes(colour = segment_id)) +
+  coord_fixed() +
+  theme(legend.position = "bottom")+
+  ggtitle("All moving segments")
+
+#long segments
 
 
-
+#note1: filter static or not? If yes, before or after id?
+#note2: how does the function we created work?
