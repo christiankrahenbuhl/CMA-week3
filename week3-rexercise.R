@@ -93,3 +93,42 @@ pedestrian3 <- as.matrix(filter(pedestrian[,1:3], TrajID == 3))
 pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 4))
 pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 5))
 pedestrian5 <- as.matrix(filter(pedestrian[,1:3], TrajID == 6))
+
+#DTW
+dtw2 <- DTW(pedestrian1,pedestrian2)
+dtw3 <- DTW(pedestrian1,pedestrian3)
+dtw4 <- DTW(pedestrian1,pedestrian4)
+dtw5 <- DTW(pedestrian1,pedestrian5)
+dtw6 <- DTW(pedestrian1,pedestrian6)
+
+DTW <- c(dtw2,dtw3,dtw4,dtw5,dtw6)
+
+#EditDist
+edit2 <- EditDist(pedestrian1,pedestrian2)
+edit3 <- EditDist(pedestrian1,pedestrian3)
+edit4 <- EditDist(pedestrian1,pedestrian4)
+edit5 <- EditDist(pedestrian1,pedestrian5)
+edit6 <- EditDist(pedestrian1,pedestrian6)
+
+EditDist <- c(edit2,edit3,edit4,edit5,edit6)
+
+#Frechet
+f2 <- Frechet(pedestrian1,pedestrian2)
+f3 <- Frechet(pedestrian1,pedestrian3)
+f4 <- Frechet(pedestrian1,pedestrian4)
+f5 <- Frechet(pedestrian1,pedestrian5)
+f6 <- Frechet(pedestrian1,pedestrian6)
+
+Frechet <- c(f2,f3,f4,f5,f6)
+
+#LCSS
+lcss1 <- LCSS(pedestrian1,pedestrian2)
+lcss2 <- LCSS(pedestrian1,pedestrian3)
+lcss3 <- LCSS(pedestrian1,pedestrian4)
+lcss4 <- LCSS(pedestrian1,pedestrian5)
+lcss5<- LCSS(pedestrian1,pedestrian6)
+lcss6 <- c(lcss2,lcss3,lcss4,lcss5,lcss6)
+
+LCSS <- c(lcss1, lcss2, lcss3, lcss4, lcss5, lcss6)
+
+
