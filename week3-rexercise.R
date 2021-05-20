@@ -149,14 +149,14 @@ S.M. %>%
   ggplot(aes(x=trajectory,y=ED,fill=trajectory))+
   geom_bar(stat="identity",)+
   theme_light()+
-  labs(title = "DTW")
+  labs(title = "ED")
 
 #Frechet plot
 S.M. %>%
   ggplot(aes(x=trajectory,y=Frechet,fill=trajectory))+
   geom_bar(stat="identity",)+
   theme_light()+
-  labs(title = "DTW")
+  labs(title = "Frechet")
 
 #LCSS plot
 S.M. %>%
