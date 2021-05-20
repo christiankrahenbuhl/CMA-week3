@@ -91,8 +91,8 @@ pedestrian1 <- as.matrix(filter(pedestrian[,1:3], TrajID == 1))
 pedestrian2 <- as.matrix(filter(pedestrian[,1:3], TrajID == 2))
 pedestrian3 <- as.matrix(filter(pedestrian[,1:3], TrajID == 3))
 pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 4))
-pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 5))
-pedestrian5 <- as.matrix(filter(pedestrian[,1:3], TrajID == 6))
+pedestrian5 <- as.matrix(filter(pedestrian[,1:3], TrajID == 5))
+pedestrian6 <- as.matrix(filter(pedestrian[,1:3], TrajID == 6))
 
 #DTW
 dtw2 <- DTW(pedestrian1,pedestrian2)
