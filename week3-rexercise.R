@@ -36,7 +36,6 @@ caro%>%
   geom_path() +
   geom_point(aes(colour = static)) +
   coord_fixed() +
-  theme(legend.position = "bottom")
 
 #Assign unique IDs based on the column static
 rle_id <- function(vec){
@@ -47,17 +46,33 @@ rle_id <- function(vec){
 caro <- caro %>%
   mutate(segment_id = rle_id(static))
 
+#removing static points
+caro <- caro %>%
+  filter(!static)
+
 #all segments
 caro%>%
   ggplot(aes(E, N))  +
   geom_path(aes(colour = segment_id)) +
   geom_point(aes(colour = segment_id)) +
   coord_fixed() +
+  ggtitle("all segments")
+
+#long segments 1: removing segments less than 5 mins
+caro <- caro %>%
+  group_by(segment_id) %>%
+   mutate(
+    x = as.integer(difftime(max(DatetimeUTC),min(DatetimeUTC), units="mins"))) %>% 
+      filter(x > 5)  
+
+#long segments 2: plotting long segments
+caro %>%
+  ggplot(aes(E, N, col= segment_id))  +
+  geom_path() +
+  geom_point() +
+  coord_fixed() +
   theme(legend.position = "bottom")+
-  ggtitle("All moving segments")
+  ggtitle("segments >= 5 minutes")
 
-#long segments
+#Task 5
 
-
-#note1: filter static or not? If yes, before or after id?
-#note2: how does the function we created work?
