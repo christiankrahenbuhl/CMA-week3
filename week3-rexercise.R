@@ -110,7 +110,7 @@ edit4 <- EditDist(pedestrian1,pedestrian4)
 edit5 <- EditDist(pedestrian1,pedestrian5)
 edit6 <- EditDist(pedestrian1,pedestrian6)
 
-EditDist <- c(edit2,edit3,edit4,edit5,edit6)
+ED <- c(edit2,edit3,edit4,edit5,edit6)
 
 #Frechet
 f2 <- Frechet(pedestrian1,pedestrian2)
@@ -126,9 +126,42 @@ lcss1 <- LCSS(pedestrian1,pedestrian2)
 lcss2 <- LCSS(pedestrian1,pedestrian3)
 lcss3 <- LCSS(pedestrian1,pedestrian4)
 lcss4 <- LCSS(pedestrian1,pedestrian5)
-lcss5<- LCSS(pedestrian1,pedestrian6)
+lcss5<-  LCSS(pedestrian1,pedestrian6)
 lcss6 <- c(lcss2,lcss3,lcss4,lcss5,lcss6)
 
 LCSS <- c(lcss1, lcss2, lcss3, lcss4, lcss5, lcss6)
 
+#creating data frame of all measures
+S.M. <-data.frame(DTW, ED, Frechet, LCSS)
+trajectory <- c(2,3,4,5,6)
+
+#plotting
+#DTW plot
+
+S.M. %>%
+  ggplot(aes(x=trajectory,y=DTW,fill=trajectory))+
+  geom_bar(stat="identity",)+
+  theme_light()+
+  labs(title = "DTW")
+
+#ED plot
+S.M. %>%
+  ggplot(aes(x=trajectory,y=ED,fill=trajectory))+
+  geom_bar(stat="identity",)+
+  theme_light()+
+  labs(title = "DTW")
+
+#Frechet plot
+S.M. %>%
+  ggplot(aes(x=trajectory,y=Frechet,fill=trajectory))+
+  geom_bar(stat="identity",)+
+  theme_light()+
+  labs(title = "DTW")
+
+#LCSS plot
+S.M. %>%
+  ggplot(aes(x=trajectory,y=LCSS,fill=trajectory))+
+  geom_bar(stat="identity",)+
+  theme_light()+
+  labs(title = "LCSS")
 
