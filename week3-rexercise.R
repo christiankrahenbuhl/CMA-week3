@@ -6,7 +6,6 @@ library(lubridate)    # To handle dates and times
 
 #Importing the data 
 caro <- read_delim("caro60.csv",",") 
-caro <- tibble(caro)
 
 caro <- caro %>%
   mutate(
@@ -35,7 +34,7 @@ caro%>%
   ggplot(aes(E, N))  +
   geom_path() +
   geom_point(aes(colour = static)) +
-  coord_fixed() +
+  coord_fixed() 
 
 #Assign unique IDs based on the column static
 rle_id <- function(vec){
@@ -58,12 +57,13 @@ caro%>%
   coord_fixed() +
   ggtitle("all segments")
 
-#long segments 1: removing segments less than 5 mins
+#long segments 1: removing segments less than 5 mins (x)
 caro <- caro %>%
   group_by(segment_id) %>%
-   mutate(
+  mutate(
     x = as.integer(difftime(max(DatetimeUTC),min(DatetimeUTC), units="mins"))) %>% 
-      filter(x > 5)  
+  filter(x > 5)  
+
 
 #long segments 2: plotting long segments
 caro %>%
@@ -75,4 +75,13 @@ caro %>%
   ggtitle("segments >= 5 minutes")
 
 #Task 5
+pedestrian <- read_delim("pedestrian.csv",",") 
 
+pedestrian %>%
+  ggplot(aes(y=N, x=E)) +
+  geom_path()+ 
+  geom_point(aes(col=TrajID)) + 
+  coord_fixed()+ 
+  facet_wrap(~TrajID,nrow=2) 
+
+#Task 6
