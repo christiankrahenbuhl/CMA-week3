@@ -87,9 +87,9 @@ pedestrian %>%
 #Task 6
 library(SimilarityMeasures)
 #Creating a matrix for each pedestrian
-pedestrian1 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "1"))
-pedestrian2 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "2"))
-pedestrian3 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "3"))
-pedestrian4 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "4"))
-pedestrian5 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "5"))
-pedestrian6 <- as.matrix(filter(pedestrian[,2:3], pedestrian$TrajID == "6"))
+pedestrian1 <- as.matrix(filter(pedestrian[,1:3], TrajID == 1))
+pedestrian2 <- as.matrix(filter(pedestrian[,1:3], TrajID == 2))
+pedestrian3 <- as.matrix(filter(pedestrian[,1:3], TrajID == 3))
+pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 4))
+pedestrian4 <- as.matrix(filter(pedestrian[,1:3], TrajID == 5))
+pedestrian5 <- as.matrix(filter(pedestrian[,1:3], TrajID == 6))
